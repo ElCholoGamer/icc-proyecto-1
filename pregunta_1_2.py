@@ -41,6 +41,10 @@ km = KMeans(18)
 clusters_list = km.fit_predict(pca_mat)
 
 pca_mat['Cluster'] = clusters_list
-
 pca_mat.to_csv('csv/1_2_smogon_agrupados_pca.csv')
+
+smogon_data = pd.read_csv('datos/smogon.csv')
+pca_mat['Pokemon'] = smogon_data['Pokemon']
+pca_mat.to_csv('csv/1_2_smogon_agrupados_pca_friendly.csv')
+
 print('CSVs generados')
