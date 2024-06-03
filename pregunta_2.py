@@ -27,16 +27,16 @@ POKEMON_KEYWORDS = [
 def keep_keywords(s: str) -> str:
     s = s.lower()
 
-    result = ''
+    result = []
 
     for i in range(len(s)):
         for keyword in POKEMON_KEYWORDS:
             if s[i:i+len(keyword)] == keyword:
-                result += keyword + ' '
+                result.append(keyword)
                 i += len(keyword) - 1
                 break
 
-    return result.strip()
+    return ' '.join(result)
 
 
 datos = pd.read_csv('datos/smogon.csv')
