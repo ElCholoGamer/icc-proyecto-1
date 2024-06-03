@@ -63,6 +63,6 @@ clusters_list = km.fit_predict(freq_table)
 
 
 datos['Cluster'] = clusters_list
-datos.to_csv('csv/2_smogon_agrupados_friendly.csv')
+datos.to_csv('2_smogon_agrupados_friendly.csv')
 
 print('CSVs generados')
