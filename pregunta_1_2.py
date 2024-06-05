@@ -37,7 +37,7 @@ print(pca_mat)
 print()
 
 
-km = KMeans(18)
+km = KMeans(n_clusters=18, n_init=200)
 clusters_list = km.fit_predict(pca_mat)
 
 pca_mat['Cluster'] = clusters_list

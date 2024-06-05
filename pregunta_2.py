@@ -58,7 +58,7 @@ print('Matriz TF-IDF:')
 print(freq_table)
 print()
 
-km = KMeans(n_clusters=18, n_init=40)
+km = KMeans(n_clusters=18, n_init=200)
 clusters_list = km.fit_predict(freq_table)
 
 
