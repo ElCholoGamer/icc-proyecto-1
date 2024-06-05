@@ -18,7 +18,7 @@ print('Datos sin doble índice:')
 print(data)
 print()
 
-PCA_COMPONENTS = 4
+PCA_COMPONENTS = 18
 
 pca = PCA(PCA_COMPONENTS)
 x_pca = pca.fit_transform(data)

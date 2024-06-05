@@ -39,7 +39,7 @@ def keep_keywords(s: str) -> str:
     return ' '.join(result)
 
 
-datos = pd.read_csv('datos/smogon.csv')
+datos = pd.read_csv('smogon.csv')
 
 datos['moves'] = datos['moves'].apply(keep_keywords)
 

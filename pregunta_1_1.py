@@ -13,7 +13,7 @@ def process_move_set(move_set: str) -> str:
     return move_set
 
 
-data = pd.read_csv('datos/smogon.csv')
+data = pd.read_csv('smogon.csv')
 data['moves'] = data['moves'].apply(process_move_set)
 
 
