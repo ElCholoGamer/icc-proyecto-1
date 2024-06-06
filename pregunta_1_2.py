@@ -44,7 +44,7 @@ pca_mat['Cluster'] = clusters_list
 pca_mat.to_csv('1_2_smogon_agrupados_pca.csv')
 
 smogon_data = pd.read_csv('smogon.csv')
-pca_mat['Pokemon'] = smogon_data['Pokemon']
-pca_mat.to_csv('1_2_smogon_agrupados_pca_friendly.csv')
+smogon_data['Cluster'] = clusters_list
+smogon_data.to_csv('1_2_smogon_agrupados_pca_friendly.csv')
 
 print('CSVs generados')
