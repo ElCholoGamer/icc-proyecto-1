@@ -47,7 +47,7 @@ data = pd.read_csv('smogon.csv')
 data['moves'] = data['moves'].apply(keep_keywords)
 
 vec = TfidfVectorizer(ngram_range=(1, 1))
-tfidf_mat = vec.fit_transform(data['moves'])
+tfidf_x = vec.fit_transform(data['moves'])
 
 print('Número total de tokens:', len(vec.vocabulary_))
 print('Vocabulario:')
@@ -55,19 +55,23 @@ print(sorted(vec.vocabulary_))
 print()
 
 headings = sorted(vec.vocabulary_)
-freq_table = pd.DataFrame(data=tfidf_mat.toarray(), columns=headings)
+tfidf_mat = pd.DataFrame(data=tfidf_x.toarray(), columns=headings)
 
 print('Matriz TF-IDF:')
-print(freq_table)
+print(tfidf_mat)
 print()
 
 km = KMeans(n_clusters=18, n_init=100)
-clusters_list = km.fit_predict(freq_table)
+clusters_list = km.fit_predict(tfidf_mat)
 
-freq_table['Cluster'] = clusters_list
-freq_table.to_csv('2_smogon_agrupados_keywords.csv')
+tfidf_mat['Cluster'] = clusters_list
+tfidf_mat.to_csv('2_smogon_agrupados_keywords.csv')
 
 data['Cluster'] = clusters_list
 data.to_csv('2_smogon_agrupados_keywords_friendly.csv')
 
 print('CSVs generados')
+print()
+
+print('Matriz TF-IDF con clusters:')
+print(tfidf_mat)

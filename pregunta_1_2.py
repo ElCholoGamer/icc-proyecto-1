@@ -48,3 +48,7 @@ smogon_data['Cluster'] = clusters_list
 smogon_data.to_csv('1_2_smogon_agrupados_pca_friendly.csv')
 
 print('CSVs generados')
+print()
+
+print('Matriz PCA con clusters:')
+print(pca_mat)
