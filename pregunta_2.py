@@ -47,7 +47,7 @@ data = pd.read_csv('smogon.csv')
 data['moves'] = data['moves'].apply(keep_keywords)
 
 vec = TfidfVectorizer(ngram_range=(1, 1))
-tfidf_x = vec.fit_transform(data['moves'])
+x_tfidf = vec.fit_transform(data['moves'])
 
 print('Número total de tokens:', len(vec.vocabulary_))
 print('Vocabulario:')
@@ -55,7 +55,7 @@ print(sorted(vec.vocabulary_))
 print()
 
 headings = sorted(vec.vocabulary_)
-tfidf_mat = pd.DataFrame(data=tfidf_x.toarray(), columns=headings)
+tfidf_mat = pd.DataFrame(data=x_tfidf.toarray(), columns=headings)
 
 print('Matriz TF-IDF:')
 print(tfidf_mat)
