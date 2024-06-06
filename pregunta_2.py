@@ -28,23 +28,26 @@ def keep_keywords(s: str) -> str:
     s = s.lower()
 
     result = []
+    i = 0
 
-    for i in range(len(s)):
+    while i < len(s):
         for keyword in POKEMON_KEYWORDS:
             if s[i:i+len(keyword)] == keyword:
                 result.append(keyword)
                 i += len(keyword) - 1
                 break
 
+        i += 1
+
     return ' '.join(result)
 
 
-datos = pd.read_csv('smogon.csv')
+data = pd.read_csv('smogon.csv')
 
-datos['moves'] = datos['moves'].apply(keep_keywords)
+data['moves'] = data['moves'].apply(keep_keywords)
 
 vec = TfidfVectorizer(ngram_range=(1, 1))
-tfidf_mat = vec.fit_transform(datos['moves'])
+tfidf_mat = vec.fit_transform(data['moves'])
 
 print('Número total de tokens:', len(vec.vocabulary_))
 print('Vocabulario:')
@@ -58,11 +61,11 @@ print('Matriz TF-IDF:')
 print(freq_table)
 print()
 
-km = KMeans(n_clusters=18, n_init=200)
+km = KMeans(n_clusters=18, n_init=100)
 clusters_list = km.fit_predict(freq_table)
 
 
-datos['Cluster'] = clusters_list
-datos.to_csv('2_smogon_agrupados_friendly.csv')
+data['Cluster'] = clusters_list
+data.to_csv('2_smogon_agrupados_friendly.csv')
 
 print('CSVs generados')
