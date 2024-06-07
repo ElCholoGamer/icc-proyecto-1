@@ -26,17 +26,17 @@ print(sorted(vec.vocabulary_))
 print()
 
 headings = sorted(vec.vocabulary_)
-tfidf_mat = pd.DataFrame(data=x_tfidf.toarray(), columns=headings)
+tfidf_df = pd.DataFrame(data=x_tfidf.toarray(), columns=headings)
 
 print('Matriz TF-IDF:')
-print(tfidf_mat)
+print(x_tfidf.toarray())
 print()
 
 km = KMeans(n_clusters=18, n_init=100)
-clusters_list = km.fit_predict(tfidf_mat)
+clusters_list = km.fit_predict(tfidf_df)
 
-tfidf_mat['Cluster'] = clusters_list
-tfidf_mat.to_csv('1_1_smogon_agrupados.csv')
+tfidf_df['Cluster'] = clusters_list
+tfidf_df.to_csv('1_1_smogon_agrupados.csv')
 
 data['Cluster'] = clusters_list
 data.to_csv('1_1_smogon_agrupados_friendly.csv')
@@ -44,5 +44,5 @@ data.to_csv('1_1_smogon_agrupados_friendly.csv')
 print('CSVs generados')
 print()
 
-print('Matriz TF-IDF con los clusters:')
-print(tfidf_mat)
+print('DataFrame TF-IDF con los clusters (guardado en 1_1_smogon_agrupados.csv):')
+print(tfidf_df)
