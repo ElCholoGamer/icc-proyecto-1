@@ -73,5 +73,5 @@ data.to_csv('2_smogon_agrupados_keywords_friendly.csv')
 print('CSVs generados')
 print()
 
-print('Matriz TF-IDF con clusters:')
+print('DataFrame TF-IDF con clusters (guardado en 2_smogon_agrupados_keywords.csv):')
 print(tfidf_df)
